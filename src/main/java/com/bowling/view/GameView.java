@@ -21,8 +21,8 @@ public class GameView implements Serializable {
     @PostConstruct
     private void init() {
 	game = new Game();
-	possibleRoll = 10;
 	totalScore = 0;
+	possibleRoll=10;
     }
 
     public void doTheRoll(int pinsFallen) {
@@ -30,7 +30,8 @@ public class GameView implements Serializable {
     }
 
     public int score() {
-	return game.score();
+	int score = game.score();
+	return score;
     }
 
     public int getTotalScore() {
@@ -41,5 +42,10 @@ public class GameView implements Serializable {
     public int getPossibleRoll() {
 	return this.possibleRoll;
     }
+
+    public Game getGame() {
+        return game;
+    }
+    
 
 }

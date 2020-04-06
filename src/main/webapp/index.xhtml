@@ -14,7 +14,7 @@
 			<p:panel>
 				<c:forEach begin="0" end="#{gameView.possibleRoll}"  varStatus="loop">
 		  				<p:commandButton value="#{loop.index}" action="#{gameView.doTheRoll(loop.index)}" 
-		  								 update="selectionPanel scorePanel"/>
+		  								 update="selectionPanel scorePanel scoreTable"/>
 				</c:forEach>
 			</p:panel>
 			
@@ -23,6 +23,45 @@
 			<p:outputLabel for="score" value="Score:"/>
 			<p:outputLabel id="score" value="#{gameView.totalScore}"/>
 		</p:panel>
+		
+		
+
+		<p:dataTable id="scoreTable" var="frame" value="#{gameView.game.framesList}">
+			
+			
+			
+			<p:column headerText="Round">
+				<h:outputText value="#{gameView.game.framesList.indexOf(frame)+1}" />
+			</p:column>
+			
+						
+			 <p:column headerText="Roll One">
+			 	<h:outputText value="#{frame.firstRoll}" />
+			 </p:column>
+			 
+			 <p:column headerText="Roll Two">
+			 	<h:outputText value="#{frame.secondRoll}" />
+			 </p:column>
+			 
+			 <p:column headerText="Score for Frame">
+			 	<h:outputText value="#{frame.frameScore}" />
+			 </p:column>
+		<!-- <p:column headerText="Strike">
+			 	<h:outputText value="#{frame.isStrike()}" />
+			 </p:column>
+			 <p:column headerText="Spare">
+			 	<h:outputText value="#{frame.isSpare()}" />
+			 </p:column>  -->	
+			    
+			</p:dataTable>
+		
+		<p:panel id="firstExtraRollPanel">
+			<h:panelGrid rendered="#{viewBean.firstExtraRoll != null}" columns = "2" cellpadding = "10" >	
+				<p:outputLabel for="firstExtraRoll" value="First Extra Roll:"/>
+				<p:outputLabel id="firstExtraRoll" value="#{viewBean.firstExtraRoll}"/>		
+			</h:panelGrid>
+		</p:panel>	
+		
 			
 		</h:form>
 	</h:body>  
