@@ -1,4 +1,4 @@
-package com.bowling.gameUtils;
+package com.bowling.game;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,6 @@ public class Game {
     List<Frame> framesList = new ArrayList<>();
 
     public Game() {
-	// TODO Auto-generated constructor stub
     }
 
     public void roll(int pinsFallen) {
@@ -73,11 +72,6 @@ public class Game {
 	return rolls[cursor] + rolls[cursor + 1] == 10;
     }
 
-    /**
-     * For testing purpose mainly
-     * 
-     * @param comma-separated ints (remember-max 12 dla strike only)
-     */
     public void roll(int... rolls) {
 	for (int pinsDown : rolls) {
 	    roll(pinsDown);

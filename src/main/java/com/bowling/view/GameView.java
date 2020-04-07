@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import com.bowling.gameUtils.Game;
+import com.bowling.game.Game;
 
 @Named
 @ViewScoped
