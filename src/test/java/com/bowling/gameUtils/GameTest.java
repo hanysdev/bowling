@@ -6,6 +6,8 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.bowling.game.Game;
+
 public class GameTest {
 
     private Game game;
@@ -13,6 +15,7 @@ public class GameTest {
     @Before
     public void setUp() {
 	game = new Game();
+
     }
 
     @Test

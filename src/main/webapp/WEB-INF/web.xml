@@ -6,6 +6,11 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 
   <display-name>Archetype Created Web Application</display-name>
   
+  		<context-param>
+			<param-name>primefaces.THEME</param-name>
+			<param-value>rocket</param-value>
+		</context-param>
+		
    <servlet>
        <servlet-name>FacesServlet</servlet-name>
        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -16,5 +21,6 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
        <servlet-name>FacesServlet</servlet-name>
        <url-pattern>*.xhtml</url-pattern>
    </servlet-mapping>  
+
 
 </web-app>
