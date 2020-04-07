@@ -3,44 +3,57 @@ package com.bowling.gameUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bowling.frames.StandardFrame;
+import com.bowling.frames.Frame;
 
 public class Game {
 
     private int roll = 0;
     private int[] rolls = new int[21];
+    private int lastExtraRoll = 0;
 
-    List<StandardFrame> framesList = new ArrayList<>();
+    List<Frame> framesList = new ArrayList<>();
 
-    public void roll(int pinsDown) {
-	rolls[roll++] = pinsDown;
+    public Game() {
+	// TODO Auto-generated constructor stub
+    }
+
+    public void roll(int pinsFallen) {
+	rolls[roll++] = pinsFallen;
     }
 
     public int score() {
 	int score = 0;
 	int cursor = 0;
 	framesList.clear();
-	for (int frame = 0; frame < 9; frame++) {
-	    StandardFrame frameObject = new StandardFrame();
+	for (int frame = 0; frame < 10; frame++) {
+	    Frame frameObject = new Frame();
 	    if (isStrike(cursor)) {
 		score += 10 + rolls[cursor + 1] + rolls[cursor + 2];
 		fillTheFrame(cursor, frameObject, score);
+		frameObject.setStrike();
+		lastExtraRoll = rolls[cursor + 2];
 		cursor++;
 	    } else if (isSpare(cursor)) {
 		score += 10 + rolls[cursor + 2];
 		fillTheFrame(cursor, frameObject, score);
+		frameObject.setSpare();
 		cursor += 2;
 	    } else {
 		score += rolls[cursor] + rolls[cursor + 1];
 		fillTheFrame(cursor, frameObject, score);
 		cursor += 2;
 	    }
+	    if (frame == 9) {
+		if (rolls[cursor] == 10) {
+		    frameObject.setSecondRoll(rolls[cursor + 1]);
+		}
+	    }
 	    framesList.add(frameObject);
 	}
 	return score;
     }
 
-    private void fillTheFrame(int cursor, StandardFrame frameObject, int score) {
+    private void fillTheFrame(int cursor, Frame frameObject, int score) {
 	frameObject.setFirstRoll(rolls[cursor]);
 	if (rolls[cursor] != 10) {
 	    frameObject.setSecondRoll(rolls[cursor + 1]);
@@ -71,8 +84,16 @@ public class Game {
 	}
     }
 
-    public List<StandardFrame> getFramesList() {
+    public List<Frame> getFramesList() {
 	return framesList;
+    }
+
+    public int getLastExtraRoll() {
+	return lastExtraRoll;
+    }
+
+    public void setLastExtraRoll(int lastExtraRoll) {
+	this.lastExtraRoll = lastExtraRoll;
     }
 
 }

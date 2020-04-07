@@ -1,14 +1,16 @@
 package com.bowling.frames;
 
-public class StandardFrame {
+public class Frame {
 
     private int firstRoll;
     private int secondRoll;
 
+    private boolean strike;
+    private boolean spare;
+
     private int possibleSecondRoll;
 
     private int frameScore;
-
 
     public int getFirstRoll() {
 	return firstRoll;
@@ -40,5 +42,21 @@ public class StandardFrame {
 
     public void setFrameScore(int frameScore) {
 	this.frameScore = frameScore;
+    }
+
+    public boolean isStrike() {
+	return strike;
+    }
+
+    public void setStrike() {
+	this.strike = true;
+    }
+
+    public boolean isSpare() {
+	return spare;
+    }
+
+    public void setSpare() {
+	this.spare = true;
     }
 }
