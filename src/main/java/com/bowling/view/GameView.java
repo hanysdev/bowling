@@ -27,6 +27,7 @@ public class GameView implements Serializable {
     }
 
     public void doTheRoll(int pinsFallen) {
+	game.roll(pinsFallen);
 	countPossibleRoll(pinsFallen);
 
     }
@@ -37,7 +38,7 @@ public class GameView implements Serializable {
     }
 
     private void countPossibleRoll(int pinsFallen) {
-	game.roll(pinsFallen);
+
 	if (pinsFallen == 10) {
 	    possibleRoll = 10;
 	    counter = 0;
